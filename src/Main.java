@@ -4,11 +4,16 @@ import java.util.zip.ZipInputStream;
 
 public class Main {
     public static void main(String[] args) {
-        String pathToZip = "D:\\Учеба\\JAVA\\Progi\\Core\\Games\\Games\\savegames\\saveGame.zip";
         String pathFromZip = "D:\\Учеба\\JAVA\\Progi\\Core\\Games\\Games\\savegames\\";
-        openZip(pathToZip, pathFromZip);
-        System.out.println(openProgress(pathFromZip));
 
+        File folder = new File(pathFromZip);
+        File[] files = folder.listFiles();
+
+        for (int i = 0; i < files.length; i++) {
+            String pathToZip = pathFromZip + files[i].getName();
+            openZip(pathToZip, pathFromZip);
+            System.out.println(openProgress(pathFromZip));
+        }
     }
 
     public static void openZip(String pathToZip, String pathFromZip) {
